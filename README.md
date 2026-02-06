@@ -7,6 +7,7 @@
 - [Usage](#usage)
 - [How to Run](#how-to-run)
 - [Architecture & Flow](#architecture)
+- [NLP](#NLP)
 
 ## Features
 - **Search**:  Search about the Module and can get their data/how to edit them or create them
@@ -104,3 +105,9 @@ First **detect_intent(intentClassifier.py)** basically finds the intention of th
 if code gets matched then search from Knowledge else using the similarity search and if both not found/not sure, restore the context 
 and return that not sure!
 Else, update the context **update_context(contextStore.py)** and return the value.
+
+
+## NLP
+### (Natural Language Processing)
+To convert most text to Human readable language pass the **DB** text to an **NLP-MODEL** could be self-trained or patch
+and api from leading research group - **Google Cloud Natural Language API**, **OpenAI API**, **Hugging Face**, etc
