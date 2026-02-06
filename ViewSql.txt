@@ -1,0 +1,76 @@
+
+ cursor.execute("""
+                   SELECT entity_type, entity_code, text
+                   FROM VW_CHAT_KNOWLEDGE
+                   """)
+---- view in service ---------
+IF EXISTS (SELECT * FROM sys.views WHERE name = 'VW_CHAT_KNOWLEDGE')
+    DROP VIEW VW_CHAT_KNOWLEDGE;
+GO
+
+CREATE VIEW VW_CHAT_KNOWLEDGE
+AS
+-- LABOUR
+SELECT
+    'LABOUR' AS entity_type,
+    labour_code AS entity_code,
+    CONCAT(
+        labour_code,
+        ' is ',
+        labour_desc,
+        ' with stdHrs: ',
+        standard_hrs,
+        ' and amount: ',
+        amount
+    ) AS text
+FROM DB_NAME
+
+UNION ALL
+-- BAY
+SELECT
+    'BAY' AS entity_type,
+    bay_code AS entity_code,
+    CONCAT(
+        bay_code,
+        ' is ',
+        eligible_for_appointment,
+        ' eligible for appointment and is active: ',
+        is_active
+    ) AS text
+FROM DB_NAME
+
+UNION ALL
+-- VIN
+SELECT
+    'VIN' AS entity_type,
+    vin_no AS entity_code,
+    CONCAT(
+        vin_no,
+        ' has engine number: ',
+        engine_no,
+        ', chassis number: ',
+        chassis_no,
+        ', bus number: ',
+        bus_no,
+        ', registration number: ',
+        registration_no
+    ) AS text
+FROM DB_NAME
+
+UNION ALL
+-- VENDOR
+SELECT
+    'VENDOR' AS entity_type,
+    vendor_code AS entity_code,
+    CONCAT(
+        vendor_code,
+        ' - ',
+        vendor_name,
+        ' (Valid from: ',
+        FORMAT(valid_from, 'dd-MM-yyyy'),
+        ' to ',
+        FORMAT(valid_to, 'dd-MM-yyyy'),
+        ') Address: ',
+        vendor_address
+    ) AS text
+FROM DB_NAME;
