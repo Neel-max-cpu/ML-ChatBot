@@ -68,12 +68,12 @@ After setting up the environment variables, you can start the application.
 ## How to Run
 ### Step 1: Start the Backend Server
 ```
-cd THRSL-CHATBOT
+cd ML-CHATBOT
 ```
 
 Navigate to the server directory and start the backend server, set it to virtual environment(if not) and start the server:
 ```
-cd THRSL-CHATBOT
+cd ML-CHATBOT
 venv\Scripts\activate
 uvicorn app.main:app --reload
 ```
