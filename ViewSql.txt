@@ -4,6 +4,7 @@
                    FROM VW_CHAT_KNOWLEDGE
                    """)
 ---- view in service ---------
+view query --- (not procedure)
 IF EXISTS (SELECT * FROM sys.views WHERE name = 'VW_CHAT_KNOWLEDGE')
     DROP VIEW VW_CHAT_KNOWLEDGE;
 GO
